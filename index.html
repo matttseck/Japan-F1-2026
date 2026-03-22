@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Trip 2026 | F1 & Sakura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        f1red: '#e10600',
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-200 font-sans antialiased p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <header class="text-center space-y-4">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Japan <span class="text-f1red">2026</span></h1>
+            <p class="text-slate-400">Kyoto • Suzuka • Osaka</p>
+            
+            <div class="bg-cardbg border border-slate-700 rounded-xl p-6 mt-6 shadow-lg">
+                <h2 class="text-sm uppercase tracking-widest text-slate-400 mb-2">Lights Out In</h2>
+                <div id="countdown" class="text-3xl md:text-5xl font-mono font-bold text-white flex justify-center gap-4">
+                    </div>
+            </div>
+        </header>
+
+        <section>
+            <h3 class="text-xl font-semibold mb-4 border-b border-slate-700 pb-2">Suzuka Track Forecast</h3>
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div class="bg-cardbg border border-slate-700 rounded-lg p-4">
+                    <p class="text-sm text-slate-400">FRI 27</p>
+                    <p class="text-2xl my-2">☀️</p>
+                    <p class="font-bold text-white">17° <span class="text-sm font-normal text-slate-400">7°</span></p>
+                </div>
+                <div class="bg-cardbg border border-slate-700 rounded-lg p-4">
+                    <p class="text-sm text-slate-400">SAT 28</p>
+                    <p class="text-2xl my-2">🌧️</p>
+                    <p class="font-bold text-white">14° <span class="text-sm font-normal text-slate-400">10°</span></p>
+                </div>
+                <div class="bg-cardbg border border-slate-700 rounded-lg p-4">
+                    <p class="text-sm text-slate-400">SUN 29</p>
+                    <p class="text-2xl my-2">☁️</p>
+                    <p class="font-bold text-white">15° <span class="text-sm font-normal text-slate-400">11°</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="text-xl font-semibold mb-4 border-b border-slate-700 pb-2">Master Itinerary</h3>
+            <div class="bg-cardbg border border-slate-700 rounded-xl overflow-hidden shadow-lg">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-800 border-b border-slate-700">
+                            <th class="p-4 font-medium text-slate-300">Date</th>
+                            <th class="p-4 font-medium text-slate-300">Event</th>
+                            <th class="p-4 font-medium text-slate-300">Time / Info</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700 text-sm md:text-base">
+                        <tr class="hover:bg-slate-800 transition">
+                            <td class="p-4 text-slate-400">Mar 25 (Wed)</td>
+                            <td class="p-4"><span class="block font-semibold text-white">Arrival & Kyoto Transit</span><span class="text-xs text-slate-400">Flight UO680 (HKG ➔ NGO)</span></td>
+                            <td class="p-4">Arrive 14:30<br><span class="text-yellow-500">🍽️ 18:30: 燒鳥 京都橘</span><br>🚗 20:30: Pick up Car</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800 transition">
+                            <td class="p-4 text-slate-400">Mar 27 (Fri)</td>
+                            <td class="p-4"><span class="block font-semibold text-white">F1 Practice Day</span><span class="text-xs text-slate-400">Suzuka Circuit - Grandstand V2-1</span></td>
+                            <td class="p-4">11:30: FP1<br>15:00: FP2</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800 transition">
+                            <td class="p-4 text-slate-400">Mar 28 (Sat)</td>
+                            <td class="p-4"><span class="block font-semibold text-white">F1 Qualifying</span><span class="text-xs text-slate-400">Suzuka Circuit - Grandstand V2-1</span></td>
+                            <td class="p-4">11:30: FP3<br><span class="text-f1red font-bold">15:00: Qualy</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-800 transition">
+                            <td class="p-4 text-slate-400 text-f1red font-bold">Mar 29 (Sun)</td>
+                            <td class="p-4"><span class="block font-semibold text-white">Race Day</span><span class="text-xs text-slate-400">Drive back to Kyoto after race</span></td>
+                            <td class="p-4"><span class="text-f1red font-bold">14:00: RACE</span><br><span class="text-yellow-500">🍽️ 21:00: 深夜燒肉だいちゃん</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-800 transition">
+                            <td class="p-4 text-slate-400">Mar 30 (Mon)</td>
+                            <td class="p-4"><span class="block font-semibold text-white">Osaka City Day</span><span class="text-xs text-slate-400">Sakura & Shopping (Travel by Train)</span></td>
+                            <td class="p-4">🚗 10:00: Return Car<br><span class="text-yellow-500">🍽️ 20:30: 壽司 赤酢</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-800 transition">
+                            <td class="p-4 text-slate-400">Mar 31 (Tue)</td>
+                            <td class="p-4"><span class="block font-semibold text-white">Departure</span><span class="text-xs text-slate-400">Flight UO691 (NGO ➔ HKG)</span></td>
+                            <td class="p-4">Depart 16:45</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="text-xl font-semibold mb-4 border-b border-slate-700 pb-2">Quick Links</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://www.formula1.com/en/f1-live.html" target="_blank" class="block bg-cardbg border border-slate-700 p-4 rounded-lg hover:border-f1red transition">
+                    <h4 class="font-bold text-white mb-1">🏎️ F1 Live Timing</h4>
+                    <p class="text-sm text-slate-400">Official live leaderboard and lap times.</p>
+                </a>
+                <a href="https://www.suzukacircuit.jp/eng/" target="_blank" class="block bg-cardbg border border-slate-700 p-4 rounded-lg hover:border-blue-500 transition">
+                    <h4 class="font-bold text-white mb-1">🗺️ Suzuka Circuit Map</h4>
+                    <p class="text-sm text-slate-400">Track layout and V2-1 Grandstand routing.</p>
+                </a>
+                <a href="https://tabelog.com/" target="_blank" class="block bg-cardbg border border-slate-700 p-4 rounded-lg hover:border-orange-500 transition">
+                    <h4 class="font-bold text-white mb-1">🍣 Tabelog</h4>
+                    <p class="text-sm text-slate-400">Check restaurant ratings and menus.</p>
+                </a>
+                <a href="https://global.jr-central.co.jp/en/" target="_blank" class="block bg-cardbg border border-slate-700 p-4 rounded-lg hover:border-green-500 transition">
+                    <h4 class="font-bold text-white mb-1">🚆 JR Trains (Kyoto/Osaka)</h4>
+                    <p class="text-sm text-slate-400">Schedules for your non-driving days.</p>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Race Start: March 29, 2026 at 14:00 JST (GMT+9)
+        const raceDate = new Date("2026-03-29T14:00:00+09:00").getTime();
+
+        const countdownTimer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = raceDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("countdown").innerHTML = "IT'S LIGHTS OUT!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `
+                <div class="flex flex-col items-center"><span class="text-white">${days}</span><span class="text-xs text-slate-400 mt-1">DAYS</span></div><span class="text-slate-600">:</span>
+                <div class="flex flex-col items-center"><span class="text-white">${hours.toString().padStart(2, '0')}</span><span class="text-xs text-slate-400 mt-1">HRS</span></div><span class="text-slate-600">:</span>
+                <div class="flex flex-col items-center"><span class="text-white">${minutes.toString().padStart(2, '0')}</span><span class="text-xs text-slate-400 mt-1">MIN</span></div><span class="text-slate-600">:</span>
+                <div class="flex flex-col items-center"><span class="text-f1red">${seconds.toString().padStart(2, '0')}</span><span class="text-xs text-slate-400 mt-1">SEC</span></div>
+            `;
+        }, 1000);
+    </script>
+</body>
+</html>
