@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan Trip · Elaine's Share</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #F6FAF7;
+    --card: #FFFFFF;
+    --ink: #0D1F12;
+    --ink2: #4E6B55;
+    --ink3: #8BA890;
+    --accent: #0C6B3A;
+    --accent2: #0C6B3A;
+    --border: #D8EAD8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+
+  .hero {
+    background: var(--ink);
+    color: #F0FAF2;
+    padding: 36px 20px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '🌸';
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    font-size: 100px;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: #8BA890;
+    margin-bottom: 24px;
+  }
+  .hero-divider {
+    height: 1px;
+    background: #1F3325;
+    margin-bottom: 20px;
+  }
+  .hero-totals {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+  }
+  .hero-total-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 4px;
+    font-family: 'DM Mono', monospace;
+  }
+  .hero-total-hkd {
+    font-family: 'DM Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: #F0FAF2;
+    line-height: 1;
+  }
+  .hero-total-jpy {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: #8BA890;
+    margin-top: 3px;
+  }
+  .hero-pill {
+    margin-left: auto;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    align-self: flex-end;
+    white-space: nowrap;
+  }
+
+  .body { padding: 0 16px; }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 18px 0 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 7px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: box-shadow 0.15s;
+  }
+  .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+
+  .card-emoji { font-size: 20px; width: 28px; text-align: center; flex-shrink: 0; }
+  .card-body { flex: 1; min-width: 0; }
+  .card-merchant {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-desc {
+    font-size: 11px;
+    color: var(--ink2);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-right { text-align: right; flex-shrink: 0; }
+  .card-share {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .card-full {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ink3);
+    margin-top: 1px;
+  }
+  .card-split {
+    display: inline-block;
+    background: #E6F4EC;
+    color: var(--accent);
+    font-size: 9px;
+    font-weight: 500;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-top: 2px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--ink);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 50;
+    border-top: 2px solid var(--accent);
+  }
+  .footer-label {
+    font-size: 10px;
+    color: #8BA890;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+  .footer-amt {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    color: #F0FAF2;
+    font-weight: 500;
+  }
+  .footer-jpy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #8BA890;
+    text-align: right;
+  }
+  .footer-right { text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Japan Trip · Feb – Mar 2026</div>
+  <div class="hero-name">Elaine</div>
+  <div class="hero-sub">Your share of shared expenses — payable to Matt</div>
+  <div class="hero-divider"></div>
+  <div class="hero-totals">
+    <div>
+      <div class="hero-total-label">Total you owe</div>
+      <div class="hero-total-hkd">HK$7,961.13</div>
+      <div class="hero-total-jpy">¥158,131</div>
+    </div>
+    <div class="hero-pill">28 transactions</div>
+  </div>
+</div>
+
+<div class="body">
+
+<div class="section-label">23 Feb</div>
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Omakase Shibuyaku</div>
+    <div class="card-desc">Omakase dinner, Shibuya, Tokyo</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$990.19</div>
+    <div class="card-full">¥19,228 · full: HK$2,970.57</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">25 Feb</div>
+<div class="card">
+  <div class="card-emoji">🚃</div>
+  <div class="card-body">
+    <div class="card-merchant">Mobility Station</div>
+    <div class="card-desc">Transport / mobility, Nagoya</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$34.49</div>
+    <div class="card-full">¥667 · full: HK$103.46</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">28 Feb</div>
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">TableCheck Booking Fee</div>
+    <div class="card-desc">Restaurant reservation fee</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$19.97</div>
+    <div class="card-full">¥390 · full: HK$59.91</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">24 Mar</div>
+<div class="card">
+  <div class="card-emoji">🚃</div>
+  <div class="card-body">
+    <div class="card-merchant">Meitetsu Train</div>
+    <div class="card-desc">Train ticket, Nagoya</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$22.71</div>
+    <div class="card-full">¥450 · full: HK$68.14</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚕</div>
+  <div class="card-body">
+    <div class="card-merchant">Uber Tokyo</div>
+    <div class="card-desc">Uber ride</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$45.43</div>
+    <div class="card-full">¥900 · full: HK$136.29</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Yakitorikyoto Tachibana</div>
+    <div class="card-desc">Yakitori dinner, Kyoto</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$512.69</div>
+    <div class="card-full">¥10,157 · full: HK$1,538.08</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚗</div>
+  <div class="card-body">
+    <div class="card-merchant">Nissan Rentacar (fee)</div>
+    <div class="card-desc">Car rental ancillary fee, Yokohama</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$46.27</div>
+    <div class="card-full">¥917 · full: HK$138.82</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚗</div>
+  <div class="card-body">
+    <div class="card-merchant">Nissan Rent A Car</div>
+    <div class="card-desc">Car rental main charge, Yokohama</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$624.11</div>
+    <div class="card-full">¥12,364 · full: HK$1,872.34</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">25 Mar</div>
+<div class="card">
+  <div class="card-emoji">🚄</div>
+  <div class="card-body">
+    <div class="card-merchant">JR Smart EX</div>
+    <div class="card-desc">Shinkansen ticket</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$298.33</div>
+    <div class="card-full">¥5,910 · full: HK$894.98</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">26 Mar</div>
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Kyoto Yakiniku Nandaimon</div>
+    <div class="card-desc">Yakiniku dinner, Kyoto</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$252.33</div>
+    <div class="card-full">¥5,013 · full: HK$757.00</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚕</div>
+  <div class="card-body">
+    <div class="card-merchant">Uber Tokyo</div>
+    <div class="card-desc">Uber ride</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$26.84</div>
+    <div class="card-full">¥533 · full: HK$80.53</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">27 Mar</div>
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Kyoto Porta</div>
+    <div class="card-desc">Udon dinner, Kyoto Porta</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$90.77</div>
+    <div class="card-full">¥1,813 · full: HK$272.32</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">28 Mar</div>
+<div class="card">
+  <div class="card-emoji">⛽</div>
+  <div class="card-body">
+    <div class="card-merchant">Cosmo Oil (Petrol)</div>
+    <div class="card-desc">Petrol</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$62.86</div>
+    <div class="card-full">¥1,245 · full: HK$188.58</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Pontocho Kiraku</div>
+    <div class="card-desc">Dinner, Pontocho district, Kyoto</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$640.74</div>
+    <div class="card-full">¥12,800 · full: HK$1,922.21</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">29 Mar</div>
+<div class="card">
+  <div class="card-emoji">🚕</div>
+  <div class="card-body">
+    <div class="card-merchant">Uber Tokyo</div>
+    <div class="card-desc">Uber ride</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$31.70</div>
+    <div class="card-full">¥633 · full: HK$95.11</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">⛽</div>
+  <div class="card-body">
+    <div class="card-merchant">Idemitsu (Petrol)</div>
+    <div class="card-desc">Petrol, Idemitsu</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$30.01</div>
+    <div class="card-full">¥594 · full: HK$90.02</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚕</div>
+  <div class="card-body">
+    <div class="card-merchant">Uber Tokyo</div>
+    <div class="card-desc">Uber ride</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$31.70</div>
+    <div class="card-full">¥633 · full: HK$95.11</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Motsunabe Rikoh</div>
+    <div class="card-desc">Motsunabe dinner, Kyoto</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$1,327.39</div>
+    <div class="card-full">¥26,517 · full: HK$3,982.18</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">30 Mar</div>
+<div class="card">
+  <div class="card-emoji">🚕</div>
+  <div class="card-body">
+    <div class="card-merchant">Uber Tokyo</div>
+    <div class="card-desc">Uber ride</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$30.03</div>
+    <div class="card-full">¥600 · full: HK$90.10</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Sushiakazu Osaka</div>
+    <div class="card-desc">Sushi restaurant, Osaka</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$1,371.58</div>
+    <div class="card-full">¥27,400 · full: HK$4,114.73</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚗</div>
+  <div class="card-body">
+    <div class="card-merchant">Nissan ETC Card Charges</div>
+    <div class="card-desc">ETC expressway toll charges</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$176.87</div>
+    <div class="card-full">¥3,533 · full: HK$530.61</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Kanidoraku Umedaten</div>
+    <div class="card-desc">Kani (crab) restaurant, Osaka</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$559.08</div>
+    <div class="card-full">¥11,169 · full: HK$1,677.23</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="section-label">31 Mar</div>
+<div class="card">
+  <div class="card-emoji">🚄</div>
+  <div class="card-body">
+    <div class="card-merchant">JR Smart EX</div>
+    <div class="card-desc">Shinkansen ticket</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$296.28</div>
+    <div class="card-full">¥5,910 · full: HK$888.85</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚃</div>
+  <div class="card-body">
+    <div class="card-merchant">Meitetsu Train</div>
+    <div class="card-desc">Train ticket, Nagoya</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$22.56</div>
+    <div class="card-full">¥450 · full: HK$67.67</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🍽</div>
+  <div class="card-body">
+    <div class="card-merchant">Unafuji Meiekiten</div>
+    <div class="card-desc">Unagi (eel) restaurant, Nagoya</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$358.28</div>
+    <div class="card-full">¥7,147 · full: HK$1,074.84</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚕</div>
+  <div class="card-body">
+    <div class="card-merchant">Uber Tokyo</div>
+    <div class="card-desc">Uber ride</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$33.37</div>
+    <div class="card-full">¥667 · full: HK$100.11</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚕</div>
+  <div class="card-body">
+    <div class="card-merchant">Uber Tokyo</div>
+    <div class="card-desc">Uber ride</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$3.34</div>
+    <div class="card-full">¥67 · full: HK$10.01</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-emoji">🚕</div>
+  <div class="card-body">
+    <div class="card-merchant">Uber Tokyo</div>
+    <div class="card-desc">Uber ride</div>
+  </div>
+  <div class="card-right">
+    <div class="card-share">HK$21.19</div>
+    <div class="card-full">¥423 · full: HK$63.58</div>
+    <div class="card-split">÷3 with Vienna</div>
+  </div>
+</div>
+
+<div style="height: 30px;"></div>
+</div>
+
+<div class="footer">
+  <div>
+    <div class="footer-label">Elaine owes Matt</div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-amt">HK$7,961.13</div>
+    <div class="footer-jpy">¥158,131</div>
+  </div>
+</div>
+
+</body>
+</html>
